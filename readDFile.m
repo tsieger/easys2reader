@@ -41,11 +41,8 @@
 % the Free Software Foundation; either version 2 of the License, or (at
 % your option) any later version.
 %
-function [x,fs,channelNames,t,tags,opts]=readDFile(fn,fixChannelNames,verbose)
+function [x,fs,channelNames,t,tags,opts]=readDFile(fn,verbose)
     if nargin<2
-        fixChannelNames=false;
-    end
-    if nargin<3
         verbose=false;
     end
 
@@ -154,10 +151,6 @@ function [x,fs,channelNames,t,tags,opts]=readDFile(fn,fixChannelNames,verbose)
             end
             fseek(f,len,0);
         end
-    end
-
-    if fixChannelNames
-        channelNames=fixDFileChannelNames(channelNames);
     end
 
     % read tag definitions
